@@ -8,9 +8,9 @@ pip install chess
 '''
 
 import argparse
+from collections import deque
 import chess
 import networkx as nx
-import matplotlib.pyplot as plt
 import pickle
 
 parser = argparse.ArgumentParser()
@@ -88,12 +88,12 @@ if board.is_checkmate():
 outputs: prints move sequence to fastest possible checkmate
 '''
 def checkmate(G, start_node: str):
-    q = []
+    q = deque()
     visited = {start_node: True}
     q.append(start_node)
 
     while len(q) != 0: 
-        vertex = q.pop(0)
+        vertex = q.popleft()
         board = chess.Board(vertex)
         if board.is_checkmate(): 
             output = []
@@ -106,7 +106,7 @@ def checkmate(G, start_node: str):
         
         for neighbor in G[vertex]:
             if visited.setdefault(neighbor, None) == None: 
-                visited[neighbor] == True 
+                visited[neighbor] = True 
                 q.append(neighbor)
 
 # load graphs and run functions
