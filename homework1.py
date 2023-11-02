@@ -1,12 +1,3 @@
-'''
-COMP 5970/6970 Graph Algorithms Homework 1 coding section
-requires networkx, argparse, and chess 
-requires python 3.6+ (can get with anaconda or elsewhere, note standard python with mac is python 2)
-pip install networkx
-pip install argparse
-pip install chess
-'''
-
 import argparse
 from collections import deque
 import chess
